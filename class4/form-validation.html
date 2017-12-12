@@ -1,0 +1,46 @@
+<!-- Arquivo: chapter4/form-validation.html -->
+<html ng-app="notesApp">
+    <head>
+      <title>Notes App</title>
+    </head>
+    <body ng-controller="MainCtrl as ctrl">
+      <div>
+        <form ng-submit="ctrl.submit()" name="meuForm">
+          <div>
+            <input type="text"
+                   ng-model="ctrl.user.username"
+                   required
+                   ng-minlength="4">
+          </div>
+          <div>
+            <input type="password"
+                   ng-model="ctrl.user.password"
+                   required>
+          </div>
+          <input  type="submit"
+                  value="Submit"
+                  ng-disabled="meuForm.$invalid">
+        </form>
+      </div>
+
+      <script
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+      </script>
+
+      <script type="text/javascript">
+        angular.module('notesApp', [])
+          .controller('MainCtrl', [function() {
+
+            var self = this;
+
+            self.submit = function() {
+              // Cria o objeto para envio ao server
+              var user = {username: self.username, password: self.password};
+              console.log('First form submit with ', self.user);
+            };
+
+          }]);
+      </script>
+
+    </body>
+  </html>

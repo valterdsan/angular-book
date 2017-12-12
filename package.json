@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/valterdsan/angular-book#readme",
   "dependencies": {
-    "http-server": "^0.10.0"
+    "http-server": "^0.10.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1"
   }
 }
