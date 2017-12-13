@@ -1,0 +1,64 @@
+<!-- Arquivo: chapter4/form-error-messages.html -->
+<html ng-app="notesApp">
+  <head>
+    <title>Notes App</title>
+  </head>
+  <body ng-controller="MainCtrl as ctrl">
+
+      <form ng-submit="ctrl.submit()" name="meuForm">
+        <div>
+          <input type="text"
+                name="uname"
+                ng-model="ctrl.user.username"
+                required  ng-minlength="4">
+
+                <span ng-show="meuForm.uname.$error.required">
+                  This is a required field
+                </span>
+                <span ng-show="meuForm.uname.$error.minlength">
+                  Minimum length required is 4
+                </span>
+                <span ng-show="meuForm.uname.$error.$invalid">
+                  This field is invalid
+                </span>
+                <span ng-show="meuForm.uname.$dirty">
+                    This field was edited
+                  </span>
+        </div>
+        <div>
+        <input type="password" name="pwd"
+               ng-model="ctrl.user.password"
+               required>
+
+                <span ng-show="meuForm.pwd.$error.required">
+                  This is a required field
+                </span>
+        </div>
+        <input type="submit"
+               value="Submit"
+               ng-disabled="meuForm.$invalid">
+      </form>
+
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+    </script>
+
+    <script type="text/javascript">
+      angular.module('notesApp', [])
+        .controller('MainCtrl', [function() {
+
+          var self = this;
+
+          self.submit = function() {
+            // (sem declarar 'user' NO controller, com ng-model o Angular cria o obj)
+            console.log('User clicked submit with ', self.user);
+
+            // *** Teste as linhas abaixo e acesse a console do browser e veja a diferença
+            // var user = {username: self.username, password: self.password};
+            // console.log('User clicked submit with ', user);
+          };
+
+        }]);
+    </script>
+  </body>
+</html>
