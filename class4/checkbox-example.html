@@ -12,11 +12,15 @@
       <label ng-bind="sport.label"></label>
       <div>
         With Binding:
-        <input type="checkbox" ng-model="sport.selected" ng-true-value="YES" ng-false-value="NO">
+        <input type="checkbox"
+                  ng-model="sport.selected"
+                  ng-true-value="YES"
+                  ng-false-value="NO">
       </div>
       <div>
         Using ng-checked:
-        <input type="checkbox" ng-checked="sport.selected === 'YES'">
+        <input type="checkbox"
+                  ng-checked="sport.selected === 'YES'">
       </div>
       <div>
         Current state: {{sport.selected}}

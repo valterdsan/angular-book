@@ -1,0 +1,55 @@
+<!-- Arquivo: chapter4/radioButtons-example.html -->
+<html ng-app="notesApp">
+
+<head>
+  <title>Notes App</title>
+</head>
+
+<body ng-controller="MainCtrl as ctrl">
+  <div>
+    <h2>Radio Buttons Test:</h2>
+    <div ng-repeat="user in ctrl.users">
+      <div ng-init="otherGender = 'other'">
+        <label ng-bind="user.name"></label>
+        <input type="radio"
+                name="gender"
+                ng-model="user.gender"
+                value="male">Male
+        <input type="radio"
+                name="gender"
+                ng-model="user.gender"
+                value="female">Female
+        <input type="radio"
+                name="gender"
+                ng-model="user.gender"
+                ng-value="otherGender">{{otherGender}}
+      </div>
+    </div>
+    <br>
+    <div ng-init="location = 'India'">
+      <select ng-model="location">
+        <option value="USA">USA</option>
+        <option value="India">INDIA</option>
+        <option value="Other">None of the above</option>
+      </select>
+    </div>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+  </script>
+  <script type="text/javascript">
+    angular.module('notesApp', [])
+      .controller('MainCtrl', [function () {
+        var self = this;
+
+        self.users = [
+          { name: 'Mary', gender: 'female' }
+        ];
+
+      }]);
+  </script>
+
+</body>
+
+</html>
