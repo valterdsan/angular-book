@@ -1,0 +1,47 @@
+<!-- Arquivo: Chapter10/simple-routing.html -->
+<html>
+
+<head>
+  <title>AngularJS Routing</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.js"></script>  
+</head>
+
+<body ng-app="routingApp">
+
+  <h2>AngularJS Routing Application</h2>
+  
+  <ul>
+      <li><a href="#/">Default Route</a></li>
+      <li><a href="#/Second">Secont Route</a></li>
+      <li><a href="#/Test">Test Route</a></li>
+      <li><a href="#/asdasdasd">Nonexistent Route</a></li>
+  </ul>
+
+  <div ng-view></div>
+
+  <script type="text/javascript">
+
+    angular.module('routingApp', ['ngRoute'])
+        .config(['$routeProvider', function($routeProvider){
+            $routeProvider
+                .when('/', {
+                    template: '<h5>This is the default route</h5>'
+                })
+                .when('/Second', {
+                    template: '<h5>This is the second route</h5>'
+                })
+                .when('/Test', {
+                    template: '<h1>Test Route</h1>',
+                    controller: ['$window', function($window){
+                        $window.alert('Test Route has been loaded!');
+                    }]
+                })
+                .otherwise({redirectTo: '/'});
+        }]);
+
+  </script>
+
+
+</body>
+</html>
